@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000;
 const app = express();
 
 hbs.registerPartials(`${__dirname}/views/partials`);
@@ -52,4 +53,6 @@ app.get('/bad', (req, res) => {
     res.send('Bad request');
 });
 
-app.listen(3000, () => console.log('Server is up on port 3000.'));
+app.listen(port, () => console.log(`Server is up on port ${port}`));
+// instead of port 3000, we'll use an environment variable that heroku will set
+// heroku will tell our app which port to use because that port will change as you deploy your app
