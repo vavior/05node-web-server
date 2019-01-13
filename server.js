@@ -20,9 +20,9 @@ app.use((req, res, next) => {
 // next is called to inform the app when the middleware is finished and therefore can continue to run.
 // This means that if we don't call next, the handlers below won't fire.
 
-app.use((req, res, next) => {
-    res.render('maintenance.hbs');
-});
+// app.use((req, res, next) => {
+//     res.render('maintenance.hbs');
+// });
 
 app.use(express.static(`${__dirname}/public`));
 
@@ -46,6 +46,12 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about.hbs', {
         pageTitle: 'About page'
+    });
+});
+
+app.get('/project', (req, res) => {
+    res.render('project', {
+        description: 'Hey there, this is my beautiful project!'
     });
 });
 
